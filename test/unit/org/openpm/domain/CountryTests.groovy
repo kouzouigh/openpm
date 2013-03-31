@@ -9,7 +9,25 @@ import org.junit.*
 @TestFor(Country)
 class CountryTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testCodeSize() {
+		mockForConstraintsTests(Country)
+		
+		def country = new Country(name: 'France',
+								  code: 'FRANCE')
+		
+		assert !country.validate()
+		
+		assert 'size' == country.errors['code']
     }
+	
+	void testNameMinSize() {
+		mockForConstraintsTests(Country)
+		
+		def country = new Country(name: 'FR',
+								  code: 'FRA')
+		
+		assert !country.validate()
+		
+		assert 'minSize' == country.errors['name']
+	}
 }
