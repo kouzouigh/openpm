@@ -76,4 +76,12 @@ class ClientTests {
 		
 		assert 'minSize' == client.errors['contactName']
 	}
+	
+	void testCountryNull() {
+		def client = new Client(country: null)
+		
+		assert !client.validate()
+		
+		assert 'nullable' == client.errors['country']
+	}
 }
