@@ -1,4 +1,4 @@
 openpm
 ======
 
-open project management in grails
+open source project management written in grails
