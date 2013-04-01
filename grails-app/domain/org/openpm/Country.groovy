@@ -1,4 +1,4 @@
-package org.openpm.domain
+package org.openpm
 
 class Country {
 	
