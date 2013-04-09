@@ -54,4 +54,12 @@ class UserTests {
 		assert 'email' == user.errors['email']
 	}
 	
+	void testCountryNull() {
+		def user = new User(country: null)
+		
+		assert !user.validate()
+		
+		assert 'nullable' == user.errors['country']
+	}
+	
 }
