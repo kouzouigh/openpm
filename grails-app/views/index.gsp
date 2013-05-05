@@ -38,7 +38,7 @@
 			<g:form name="loginForm" method="POST" url="[controller:'user', action:'login']" accept-charset="UTF-8">
 			<g:textField required="true" id="email" class="span4" name="email" 
 						 placeholder="Email" value="${fieldValue(bean:loginCmd, field:'email')}"/>
-			<g:textField required="true" type="password" id="password" class="span4" name="password" 
+			<g:passwordField required="true" type="password" id="password" class="span4" name="password" 
 						 placeholder="Password" value="${fieldValue(bean:loginCmd, field:'password')}"/>
             <label class="checkbox">
             	<input type="checkbox" name="remember" value="1"> Remember Me
