@@ -30,20 +30,24 @@
 	<div class="row">
 		<div class="span4 offset4 well">
 			<legend>Please Sign In</legend>
-			<g:hasErrors  bean="${loginCmd}">
+			<g:if test="${flash.message}">
           		<div class="alert alert-error">
                 	<a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
             	</div>
-            </g:hasErrors>
-			<g:form name="loginForm" method="POST" url="[controller:'user', action:'login']" accept-charset="UTF-8">
-			<g:textField required="true" id="email" class="span4" name="email" 
-						 placeholder="Email" value="${fieldValue(bean:loginCmd, field:'email')}"/>
-			<g:passwordField required="true" type="password" id="password" class="span4" name="password" 
-						 placeholder="Password" value="${fieldValue(bean:loginCmd, field:'password')}"/>
-            <label class="checkbox">
-            	<input type="checkbox" name="remember" value="1"> Remember Me
-            </label>
-			<button type="submit" name="submit" class="btn btn-primary btn-block">Log in</button>
+           </g:if>
+			<g:form url="[controller:'auth', action:'signIn']" accept-charset="UTF-8">
+				<input type="hidden" name="targetUri" value="${targetUri}" />
+				<g:textField required="true" id="email" class="span4" name="username" 
+							 placeholder="Email" value="${username}"/>
+							 
+				<g:passwordField required="true" type="password" id="password" class="span4" name="password" 
+							 placeholder="Password" value=""/>
+							 
+	            <label class="checkbox">
+	            	<input type="checkbox" name="remember" value="1"> Remember Me
+	            </label>
+	            
+				<button type="submit" name="submit" class="btn btn-primary btn-block">Log in</button>
 			</g:form>    
 		</div>
 	</div>
