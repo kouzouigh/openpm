@@ -27,7 +27,11 @@
           <a class="brand" href="#">Open Project Management</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Projects</a></li>
+              <li class="active">
+              	<g:link controller="project" action="list">
+					Projects
+				</g:link>
+			  </li>
               <li><a href="#about">Invoices</a></li>
               <li><a href="#contact">Administration</a></li>
               <li><a href="#about">About</a></li>
