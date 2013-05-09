@@ -8,7 +8,7 @@
 		<div class="control-group">
 			<label for="basicinput" class="control-label">Username</label>
 			<div class="controls">
-				<input type="text" class="span8"
+				<input type="text" class="span8" value="${user.username}"
 					placeholder="Type something here..." id="basicinput"/>
 			</div>
 		</div>
@@ -23,36 +23,27 @@
 		<div class="control-group">
 			<label for="basicinput" class="control-label">Email</label>
 			<div class="controls">
-				<input type="text" class="span8"
+				<input type="text" class="span8" value="${user.email}"
 					placeholder="Type something here..." id="basicinput"/> 
 			</div>
 		</div>
 		<div class="control-group">
 			<label for="basicinput" class="control-label">Code</label>
 			<div class="controls">
-				<input type="text" class="span8"
+				<input type="text" class="span8" value="${user.code}"
 					placeholder="Type something here..." id="basicinput">
-			</div>
-		</div>
-		
-		<div class="control-group">
-			<label for="basicinput" class="control-label">Disabled Input</label>
-			<div class="controls">
-				<input type="text" disabled="" class="span8"
-					placeholder="You can't type something here..." id="basicinput">
 			</div>
 		</div>
 
 		<div class="control-group">
 			<label for="basicinput" class="control-label">Country</label>
 			<div class="controls">
-				<select class="span8" data-placeholder="Select here.." tabindex="1">
-					<option value="">Select here..</option>
-					<option value="Category 1">First Row</option>
-					<option value="Category 2">Second Row</option>
-					<option value="Category 3">Third Row</option>
-					<option value="Category 4">Fourth Row</option>
-				</select>
+				<g:select class="span8"
+						  name="user.country.id" 
+						  from="${countries}"
+				 		  value="${user.country.id}"
+				 		  noSelection="${['null':'Select One...']}"
+				 		  optionKey="id" optionValue="name"/>
 			</div>
 		</div>
 		
