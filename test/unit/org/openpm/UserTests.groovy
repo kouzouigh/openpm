@@ -15,29 +15,21 @@ class UserTests {
 	}
 	
 	void testPasswordNull() {
-		def user = new User(password: null)
+		def user = new User(passwordHash: null)
 		
 		assert !user.validate()
 		
-		assert 'nullable' == user.errors['password']
+		assert 'nullable' == user.errors['passwordHash']
 	}
 	
 	void testPasswordBlank() {
-		def user = new User(password: '')
+		def user = new User(passwordHash: '')
 		
 		assert !user.validate()
 		
-		assert 'blank' == user.errors['password']
+		assert 'blank' == user.errors['passwordHash']
 	}
-	
-	void testPasswordSize() {
-		def user = new User(password: 'test')
-		
-		assert !user.validate()
-		
-		assert 'size' == user.errors['password']
-	}
-	
+
 	void testEmailNull() {
 		def user = new User(email: null)
 		
@@ -53,6 +45,31 @@ class UserTests {
 		
 		assert 'email' == user.errors['email']
 	}
+	
+	void testCodeNull() {
+		def user = new User()
+		
+		assert !user.validate()
+		
+		assert 'nullable' == user.errors['code']
+	}
+	
+	void testCodeSizeLessThan3() {
+		def user = new User(code:'SA')
+		
+		assert !user.validate()
+		
+		assert 'size' == user.errors['code']
+	}
+	
+	void testCodeSizeMoreThan3() {
+		def user = new User(code:'ADMIN')
+		
+		assert !user.validate()
+		
+		assert 'size' == user.errors['code']
+	}
+	
 	
 	void testCountryNull() {
 		def user = new User(country: null)
