@@ -5,15 +5,24 @@ package org.openpm
  * via access control by convention.
  */
 class SecurityFilters {
-    def filters = {
-        all(uri: "/**") {
-            before = {
-                // Ignore direct views (e.g. the default main index page).
-                if (!controllerName) return true
+	
+	static authenticatedActions = [
+		[controller: 'project', roles: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_PROJECT_MANAGER']]
+	]
 
-                // Access control by convention.
-                accessControl()
-            }
-        }
+	
+    def filters = {
+		// Ensure that all controllers and actions require an authenticated user,
+		auth(controller: "*", action: "*") {
+			before = {
+				// except for the "help" controller and the "error" controller
+				if (controllerName == "error") {
+					return true
+				}
+				// This just means that the user must be authenticated. He does
+				// not need any particular role or permission.
+				accessControl { true }
+			}
+		}
     }
 }
