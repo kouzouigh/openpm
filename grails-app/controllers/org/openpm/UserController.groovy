@@ -1,8 +1,20 @@
 package org.openpm
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 class UserController {
 	
 	def index() {}
+	
+	def edit = {
+		def user = User.findByUsername(params.id)
+		if( !user ) {
+			flash.message = "User ${params.id} not found"
+		}
+		def countries = Country.findAll()
+		[user:user, countries: countries]
+	}
 
 	def login(LoginCommand cmd) {
 		if(request.method == 'POST') {
