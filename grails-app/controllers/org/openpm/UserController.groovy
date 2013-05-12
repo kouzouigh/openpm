@@ -8,7 +8,8 @@ class UserController {
 	def index() {}
 	
 	def edit = {
-		def user = User.findByUsername(params.id)
+		def username = SecurityUtils.subject.principals.oneByType(String)
+		def user = User.findByUsername(username)
 		if( !user ) {
 			flash.message = "User ${params.id} not found"
 		}
