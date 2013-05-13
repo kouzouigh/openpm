@@ -6,7 +6,12 @@ class ProjectController {
 		redirect (action: 'list')
 	}
 	
-	def list = {
+	def list = { 
 		
 	}
+	
+	def create = {
+		[project: new Project(params)]
+	}
+	
 }
