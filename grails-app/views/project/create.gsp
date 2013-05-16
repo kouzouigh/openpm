@@ -5,17 +5,23 @@
 </head>
 <body>
 
-	<form class="form-horizontal row-fluid">
-		<div class="control-group">
+	<g:form action="save" class="form-horizontal row-fluid">
+		<div class="control-group ${project.errors['name'] ? 'error':''}">
 			<label for="name" class="control-label">Project name</label>
 			<div class="controls">
 				<g:textField name="name" class="span8" value="${project.name}" id="name"/>
+				<g:hasErrors  bean="${project}" field="name">
+               		<span class="help-inline"><g:fieldError bean="${project}" field="name" /></span>
+            	</g:hasErrors>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="control-group ${project.errors['code'] ? 'error':''}">
 			<label for="code" class="control-label">Project code</label>
 			<div class="controls">
 				<input type="text" class="span8" id="code"/>
+				<g:hasErrors  bean="${project}" field="code">
+               		<span class="help-inline"><g:fieldError bean="${project}" field="code" /></span>
+            	</g:hasErrors>
 			</div>
 		</div>
 		
@@ -25,27 +31,27 @@
 				<g:textArea id="description" name="description" class="span8" value="${project.description}"></g:textArea> 
 			</div>
 		</div>
-		<div class="control-group">
-			<label for="basicinput" class="control-label">Code</label>
-			<div class="controls">
-				<input type="text" class="span8" value="${user?.code}"
-					placeholder="Type something here..." id="basicinput">
-			</div>
-		</div>
-
-		<div class="control-group">
+		
+		<div class="control-group ${project.errors['client'] ? 'error':''}">
 			<label for="basicinput" class="control-label">Client</label>
 			<div class="controls">
-				<g:select class="span8"
-						  name="user.country.id" 
-						  from="${clients}"
-				 		  value="${project.client.id}"
-				 		  noSelection="${['null':'Select One...']}"
-				 		  optionKey="id" optionValue="name"/>
+				<div class="input-append" style="width:100%">
+   					<g:select class="span8"
+					  name="user.country.id" 
+					  from="${clients}"
+			 		  value="${project.client.id}"
+			 		  noSelection="${['null':'Select One...']}"
+			 		  optionKey="id" optionValue="name"/>
+   					<button class="btn" style="display:inline" type="button"><i class="icon-plus"></i> Create client</button>
+    			</div>
+				
+				<g:hasErrors  bean="${project}" field="client">
+               		<span class="help-inline"><g:fieldError bean="${project}" field="client" /></span>
+            	</g:hasErrors>
 			</div>
 		</div>
 		
-		<div class="control-group">
+		<div class="control-group ${project.errors['countries'] ? 'error':''}">
 			<label for="basicinput" class="control-label">Countries</label>
 			<div class="controls">
 				<g:select class="span8"
@@ -75,9 +81,9 @@
 		
 		<div class="control-group">
 			<div class="controls">
-				<button class="btn" type="submit">Save</button>
+				<button class="btn btn-primary" type="submit">Save</button>
 			</div>
 		</div>
-	</form>
+	</g:form>
 </body>
 </html>
