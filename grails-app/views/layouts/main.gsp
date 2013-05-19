@@ -33,7 +33,7 @@
 				</g:link>
 			  </li>
               <li><a href="#about">Invoices</a></li>
-              <li><a href="#contact">Administration</a></li>
+              <li><g:link controller="admin">Administration</g:link></li>
               <li><a href="#about">About</a></li>
               
             </ul>
@@ -43,7 +43,7 @@
 						
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-user"></i> 
-							 <shiro:principal  />
+							 <shiro:principal />
 							<b class="caret"></b>
 						</a>
 						
