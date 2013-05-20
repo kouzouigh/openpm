@@ -1,6 +1,6 @@
 <div class="mainnav navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
         	<a class="brand" href="#">Open Project Management</a>
             <ul class="nav">
 				<li class="active"><g:link controller="project" action="list">Projects</g:link></li>
@@ -24,10 +24,11 @@
 
 <div class="subnav navbar navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
             <ul class="nav">
-                <li><a>foo</a></li>
-                <li><a>bar</a></li>
+                <li><a><i class="icon-user"></i>Users</a></li>
+                <li><g:link controller="client">Clients</g:link></li>
+                <li><a><i class="icon-flag"></i>Countries</a></li>
             </ul>
         </div>
     </div>
