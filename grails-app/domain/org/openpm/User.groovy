@@ -9,8 +9,7 @@ class User {
 	Country country
 	
 	static hasMany = [ roles: Role, permissions: String ]
-	
-	
+
     static constraints = {
 		email email:true, blank:false, nullable:false, unique:true
 		username nullable: false, blank: false, unique: true
@@ -18,4 +17,13 @@ class User {
 		code blank: false, size: 3..3
 		country nullable: false
     }
+	
+	static mapping = {
+		cache true
+	}
+	
+	@Override
+	String toString() {
+		return username
+	}
 }
