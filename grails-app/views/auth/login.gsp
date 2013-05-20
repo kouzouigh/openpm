@@ -5,51 +5,79 @@
     <title>Open Project Management</title>
     
     <r:require modules="bootstrap, bootstrap-fixtaglib"/>
+    
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,800">
+	<link rel="stylesheet" href="http://jumpstartuidemo.com/themes/dashboard/css/font-awesome.css">
+    
+   <%-- 
+    <link href="http://localhost:8080/openpm/static/bundle-bundle_bootstrap_head.css" rel="stylesheet">
+    <link href="http://localhost:8080/openpm/static/bundle-fixtaglib_head.css" rel="stylesheet">
+    <link href="http://jumpstartuidemo.com/themes/dashboard/css/application.css" rel="stylesheet">
+    <script src="http://jumpstartuidemo.com/themes/dashboard/js/libs/modernizr-2.5.3.min.js"></script>
+    --%>
 	<r:layoutResources/>
-	<style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-	
+
+	<link type="text/css" href="${resource(dir: 'css', file: 'login.css')}" rel="stylesheet" />
+	<script src="http://jumpstartuidemo.com/themes/dashboard/js/libs/modernizr-2.5.3.min.js"></script>
+    
   </head>
 
-  <body>
+<body class="login">
 
-    <div class="container">
-	<div class="row">
-		<div class="span4 offset4 well">
-			<legend>Please Sign In</legend>
-			<g:if test="${flash.message}">
-          		<div class="alert alert-error">
-                	<a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
-            	</div>
-           </g:if>
-			<g:form url="[controller:'auth', action:'signIn']" accept-charset="UTF-8">
-				<input type="hidden" name="targetUri" value="${targetUri}" />
-				<g:textField required="true" id="email" class="span4" name="username" 
-							 placeholder="Email" value="${username}"/>
-							 
-				<g:passwordField required="true" type="password" id="password" class="span4" name="password" 
-							 placeholder="Password" value=""/>
-							 
-	            <label class="checkbox">
-	            	<input type="checkbox" name="remember" value="1"> Remember Me
-	            </label>
-	            
-				<button type="submit" name="submit" class="btn btn-primary btn-block">Log in</button>
-			</g:form>    
-		</div>
-	</div>
 
-      <hr>
 
-      <footer>
-        <p>&copy; Open Project Management - 2013</p>
-      </footer>
+<div class="account-container login stacked">
+	
+	<div class="content clearfix">
+		
+		<g:form url="[controller:'auth', action:'signIn']" accept-charset="UTF-8" method="post">
+			<input type="hidden" name="targetUri" value="${targetUri}" />
+			<h1>Sign In</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Sign in using your registered account:</p>
+				
+				<div class="field">
+					<label for="username">Email:</label>
+					<!--input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" /-->
+					<g:textField id="email" class="login username-field" name="username" placeholder="Email" value="${username}" required="true"/>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Password:</label>
+					<g:passwordField id="password" class="login password-field" name="password" placeholder="Password" value="" required="true"/>
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
+					<label class="choice" for="Field">Keep me signed in</label>
+				</span>
+									
+				<button class="button btn btn-warning btn-large">Sign In</button>
+				
+			</div> <!-- .actions -->
+			
+			<div class="login-social">
+				<a href="#">Forgot your password?</a>
+			</div>
+			
+		</g:form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
 
-    </div> <!-- /container -->
+
+<!-- Text Under Box -->
+<div class="login-extra">
+	Open project management &copy; 2013
+</div> <!-- /login-extra -->
+
 
   </body>
 </html>
