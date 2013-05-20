@@ -1,9 +1,10 @@
 <html>
 <head>
-<title>An Example Page</title>
+<title>My Profile</title>
 <meta name="layout" content="main" />
 </head>
 <body>
+
 	<form class="form-horizontal row-fluid">
 		<div class="control-group">
 			<label for="basicinput" class="control-label">Username</label>
