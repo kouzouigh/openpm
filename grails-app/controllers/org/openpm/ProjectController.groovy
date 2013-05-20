@@ -6,12 +6,26 @@ class ProjectController {
 		redirect (action: 'list')
 	}
 	
-	def list = { 
-		
+	def list () { 
+		[projects: Project.findAll()]	
 	}
 	
-	def create = {
-		[project: new Project(params)]
+	def create () {
+		def project = new Project(client: new Client())
+		[project: project, clients : Client.findAll()]
+	}
+	
+	def update() {
+		def project = Project.get(params.id)
+		project.properties = params
+		project.save()
+	}
+	
+	def save() {
+		def project = new Project(params)
+		project.client = new Client()
+		project.save()
+		render view: "create", model: [project: project]
 	}
 	
 }

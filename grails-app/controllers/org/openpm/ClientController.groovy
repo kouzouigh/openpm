@@ -19,6 +19,6 @@ class ClientController {
 	}
 	
 	def create() {
-		
+		[client: new Client(country: new Country()), clients: Client.findAll()]
 	}
 }
