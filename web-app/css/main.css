@@ -1,7 +1,17 @@
 body {
 	padding-top: 100px
 }
+
+.align-right {
+	text-align: right !important;
+}
+
 .subnav.navbar {
     top: 40px;
     z-index: 1020;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
 }
