@@ -20,7 +20,7 @@
 			<td>${client.contactName}</td>
 			<td>${client.email}</td>
 			<td>France</td>
-			<td>
+			<td class="align-right">
 				<a class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></a>
 				<a class="btn btn-small btn-danger"><i class="icon-remove icon-white"></i></a>
 			</td>
