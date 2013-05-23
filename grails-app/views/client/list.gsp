@@ -21,7 +21,7 @@
 			<td>${client.email}</td>
 			<td>France</td>
 			<td class="align-right">
-				<a class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></a>
+				<g:link action="edit" id="${client.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
 				<a class="btn btn-small btn-danger" data-toggle="modal" href="#modalPanel"><i class="icon-remove icon-white"></i></a>
 			</td>
 		</tr>
@@ -31,5 +31,14 @@
 
 <g:render template="/common/modal"/>
 
+<g:link action="showTime" elementId="timeLink">Show The time</g:link>
+
+<div id="time"></div>
+
+<r:script>
+	$('#timeLink').click(function(){
+		$('#time').load(this.href); return false;
+	})
+</r:script>
 </body>
 </html>
