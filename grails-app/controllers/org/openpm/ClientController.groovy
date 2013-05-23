@@ -19,6 +19,16 @@ class ClientController {
 	}
 	
 	def create() {
-		[client: new Client(country: new Country()), clients: Client.findAll()]
+		def clientInstance = new Client();
+		[clientInstance: clientInstance]
+	}
+	
+	def save() {
+		Client client = new Client(params)
+		if( client.save() ) {
+			redirect(action: "list")
+		}
+		println client.errors
+		render view:'create', model: [clientInstance: client]
 	}
 }
