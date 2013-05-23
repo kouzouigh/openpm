@@ -6,37 +6,46 @@
 	
 	
 
-<form class="form-horizontal row-fluid">
+<form action="save" class="form-horizontal row-fluid">
 	<div class="control-group">
 	   	<label class="control-label" for="name">Name</label>
 	   	<div class="controls">
-	         <input type="text" class="input-xxlarge" id="name" value=""/>
+   		 	<g:textField name="name" class="input-xxlarge" value="${clientInstance.name}" id="name"/>
+			<g:hasErrors  bean="${clientInstance}" field="name">
+          		<span class="help-inline"><g:fieldError bean="${clientInstance}" field="name" /></span>
+            </g:hasErrors>
 	    </div>
 	</div>
 	<div class="control-group">
 	   	<label class="control-label" for="email">Email</label>
 	   	<div class="controls">
-	         <input type="text" class="input-xxlarge" id="email" value=""/>
+	     	<g:textField name="email" class="input-xxlarge" value="${clientInstance.email}" id="email"/>
+			<g:hasErrors  bean="${clientInstance}" field="email">
+          		<span class="help-inline"><g:fieldError bean="${clientInstance}" field="email" /></span>
+            </g:hasErrors>
 	    </div>
 	</div>
 	<div class="control-group">
 	   	<label class="control-label" for="contactName">Contact name</label>
 	   	<div class="controls">
-	         <input type="text" class="input-xxlarge" id="contactName" value=""/>
+	        <g:textField name="contactName" class="input-xxlarge" value="${clientInstance.contactName}" id="contactName"/>
+			<g:hasErrors  bean="${clientInstance}" field="contactName">
+          		<span class="help-inline"><g:fieldError bean="${clientInstance}" field="contactName" /></span>
+            </g:hasErrors>
 	    </div>
 	</div>
 	<div class="control-group">
 		<label for="basicinput" class="control-label">Country</label>
 		<div class="controls">
-			<g:select name="client.country.id" 
-					  from="${countries}"
-				 	  value="${client.country.id}"
+			<g:select name="country.id" 
+					  from="${org.openpm.Country.list()}"
+				 	  value="${clientInstance?.country?.id}"
 				 	  noSelection="${['null':'Select One...']}"
 				 	  optionKey="id" optionValue="name"/>
 		</div>
 	</div>
 	<div class="form-actions">
-    	<button type="submit" class="btn btn-primary">Save changes</button>
+    	<button type="submit" class="btn btn-primary">Create</button>
         <button class="btn">Cancel</button>
     </div>
 </form>
