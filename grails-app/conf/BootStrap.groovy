@@ -1,24 +1,37 @@
+import grails.util.Environment;
+
 import org.openpm.Country
 import org.openpm.Role
 import org.openpm.User
 
 
 class BootStrap {
+	def fixtureLoader
 	def shiroSecurityService
 
 	def init = { servletContext ->
+		
+		// Loading dev data
+		if ( Environment.current == Environment.DEVELOPMENT)  {
+			println "Loading fixture data"
+			fixtureLoader.with {
+				load("countries")
+			}
+		}
+		
+		def country = Country.findByName('France')
 
 		// Create the admin role
-		def adminRole = Role.findByName('ROLE_ADMIN') ?:
-			new Role(name: 'ROLE_ADMIN').save(flush: true, failOnError: true)
+		def adminRole = Role.findByName('ADMIN') ?:
+			new Role(name: 'ADMIN').save(flush: true, failOnError: true)
 			
-		// Create countries
-		def country = new Country(code: 'FRA', name: 'France')
-							.save(flush: true, failOnError: true)
-
+		// Create Project Manager role
+		def pmRole = Role.findByName('PROJECT_MANAGER') ?:
+			new Role(name: 'PROJECT_MANAGER').save(flush: true, failOnError: true)
+			
 		// Create the user role
-		def userRole = Role.findByName('ROLE_USER') ?:
-			new Role(name: 'ROLE_USER').save(flush: true, failOnError: true)
+		def consultantRole = Role.findByName('CONSULTANT') ?:
+			new Role(name: 'CONSULTANT').save(flush: true, failOnError: true)
 
 		// Create an admin user
 		def adminUser = User.findByUsername('admin') ?:
@@ -31,7 +44,7 @@ class BootStrap {
 
 		// Add roles to the admin user
 		assert adminUser.addToRoles(adminRole)
-				.addToRoles(userRole)
+				.addToRoles(consultantRole)
 				.save(flush: true, failOnError: true)
 
 		// Create an standard user
@@ -44,7 +57,7 @@ class BootStrap {
 					.save(flush: true, failOnError: true)
 
 		// Add role to the standard user
-		assert standardUser.addToRoles(userRole)
+		assert standardUser.addToRoles(consultantRole)
 				.save(flush: true, failOnError: true)
 
 	}
