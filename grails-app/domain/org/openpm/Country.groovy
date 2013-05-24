@@ -6,7 +6,7 @@ class Country {
 	String code
 
     static constraints = {
-		name minSize: 3
-		code size: 3..3
+		name minSize: 3, unique: true
+		code size: 3..3, unique: true
     }
 }
