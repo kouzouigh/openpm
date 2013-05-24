@@ -9,17 +9,6 @@ import org.openpm.Country;
  */
 @TestFor(Country)
 class CountryTests {
-
-    void testCodeSize() {
-		mockForConstraintsTests(Country)
-		
-		def country = new Country(name: 'France',
-								  code: 'FRANCE')
-		
-		assert !country.validate()
-		
-		assert 'size' == country.errors['code']
-    }
 	
 	void testNameMinSize() {
 		mockForConstraintsTests(Country)
