@@ -16,6 +16,15 @@ class UserController {
 		def countries = Country.findAll()
 		[user:user, countries: countries]
 	}
+	
+	def update() {
+		
+	}
+	
+	def list() {
+		println User.findAll()
+		[users: User.findAll()]
+	}
 
 	def login(LoginCommand cmd) {
 		if(request.method == 'POST') {
