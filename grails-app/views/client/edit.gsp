@@ -4,7 +4,7 @@
 </head>
 <body>
 	
-<form action="update" class="form-horizontal row-fluid">
+<g:form action="update" class="form-horizontal row-fluid" method="get">
 	<input type="hidden" name="id" value="${clientInstance.id}" />
 	<input type="hidden" name="version" value="${clientInstance.version}" />
 	<div class="control-group">
@@ -48,7 +48,7 @@
     	<button type="submit" class="btn btn-primary">Save changes</button>
         <g:link action="list" class="btn">Cancel</g:link>
     </div>
-</form>
+</g:form>
 
 </body>
 </html>
