@@ -3,10 +3,8 @@
 <meta name="layout" content="main" />
 </head>
 <body>
-	
-	
 
-<form action="save" class="form-horizontal row-fluid">
+<g:form action="save" class="form-horizontal row-fluid">
 	<div class="control-group">
 	   	<label class="control-label" for="name">Name</label>
 	   	<div class="controls">
@@ -48,7 +46,7 @@
     	<button type="submit" class="btn btn-primary">Create</button>
         <button class="btn">Cancel</button>
     </div>
-</form>
+</g:form>
 
 </body>
 </html>
