@@ -23,8 +23,9 @@ class ProjectController {
 	
 	def save() {
 		def project = new Project(params)
-		project.client = new Client()
-		project.save()
+		if( project.save() ) {
+			redirect(action:'list')
+		}
 		render view: "create", model: [project: project]
 	}
 	
