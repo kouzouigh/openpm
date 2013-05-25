@@ -77,4 +77,12 @@ class ProjectTests {
 		
 		assert 'minSize' == project.errors['countries']
 	}
+	
+	void testStartDateNull() {
+		def project = new Project(startDate: null)
+		
+		assert !project.validate()
+		
+		assert 'nullable' == project.errors['startDate']
+	}
 }
