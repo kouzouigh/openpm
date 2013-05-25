@@ -19,7 +19,7 @@
 			<td>${client.name}</td>
 			<td>${client.contactName}</td>
 			<td>${client.email}</td>
-			<td>France</td>
+			<td>${client.country.name}</td>
 			<td class="align-right">
 				<g:link action="edit" id="${client.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
 				<a class="btn btn-small btn-danger" data-toggle="modal" href="#modalPanel"><i class="icon-remove icon-white"></i></a>
