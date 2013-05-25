@@ -9,7 +9,7 @@
 		<tr>
 			<th>Username</th>
 			<th>Code</th>
-			<th>Role</th>
+			<th>Role(s)</th>
 			<th>Email</th>
 			<th>Country</th>
 			<th></th>
@@ -19,7 +19,7 @@
 		<tr>
 			<td>${user.username}</td>
 			<td>${user.code}</td>
-			<td>${user.roles}</td>
+			<td>${user.roles.name.join(', ')}</td>
 			<td>${user.email}</td>
 			<td>France</td>
 			<td class="align-right">
