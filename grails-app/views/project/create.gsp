@@ -18,7 +18,7 @@
 		<div class="control-group ${hasErrors(field:'code', 'error')}">
 			<label for="code" class="control-label">Project code</label>
 			<div class="controls">
-				<input type="text" class="span8" id="code"/>
+				<g:textField name="code" value="${project.code}" class="span8" id="code"/>
 				<g:hasErrors  bean="${project}" field="code">
                		<span class="help-inline"><g:fieldError bean="${project}" field="code" /></span>
             	</g:hasErrors>
@@ -57,7 +57,7 @@
 			<div class="controls">
 				<g:select class="span8"
 						  id="countries"
-						  name="country.id" 
+						  name="countries" 
 						  multiple="true"
 						  from="${org.openpm.Country.list()}"
 				 		  value="${project?.countries?.id}"
@@ -70,17 +70,9 @@
 		</div>
 		
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Start date</label>
+			<label for="startDate" class="control-label">Start date</label>
 			<div class="controls">
-				<g:datePicker name="finishDate" value="${new Date()}"precision="day" relativeYears="[-2..7]"/>
-			</div>
-		</div>
-		
-		<div class="control-group">
-			<label for="basicinput" class="control-label">Finish date</label>
-			<div class="controls">
-				<g:datePicker name="finishDate" value="${new Date()}" 
-					noSelection="['':'']" precision="day" relativeYears="[-2..7]"/>
+				<g:datePicker name="startDate" value="${new Date()}"precision="day" relativeYears="[-1..7]"/>
 			</div>
 		</div>
 		
