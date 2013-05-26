@@ -2,11 +2,16 @@ package org.openpm
 
 class Project {
 	
+	/*enum Status {
+		OPEN, CLOSED
+	}*/
+	
 	String name
 	String code
 	String description
 	Client client
 	Date startDate
+	Date endDate
 	
 	static hasMany = [countries: Country]
 
@@ -16,5 +21,10 @@ class Project {
 		countries nullable:false, minSize: 1
 		client nullable: false
 		startDate nullable: false
+		endDate nullable:false, validator: {val, obj ->
+			if( val?.before(obj.startDate) ) {
+				return false
+			}
+		}
     }
 }
