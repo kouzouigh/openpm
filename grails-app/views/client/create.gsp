@@ -3,12 +3,14 @@
 <meta name="layout" content="main" />
 </head>
 <body>
-
+<h3 class="page-header">
+    Create Client
+</h3>
 <g:form action="save" class="form-horizontal row-fluid">
 	<div class="control-group">
 	   	<label class="control-label" for="name">Name</label>
 	   	<div class="controls">
-   		 	<g:textField name="name" class="input-xxlarge" value="${clientInstance.name}" id="name"/>
+   		 	<g:textField name="name" class="input-xxlarge" value="${clientInstance.name}" id="name" required="" />
 			<g:hasErrors  bean="${clientInstance}" field="name">
           		<span class="help-inline"><g:fieldError bean="${clientInstance}" field="name" /></span>
             </g:hasErrors>
@@ -17,7 +19,7 @@
 	<div class="control-group">
 	   	<label class="control-label" for="email">Email</label>
 	   	<div class="controls">
-	     	<g:textField name="email" class="input-xxlarge" value="${clientInstance.email}" id="email"/>
+	     	<g:textField name="email" class="input-xxlarge" value="${clientInstance.email}" id="email" required=""/>
 			<g:hasErrors  bean="${clientInstance}" field="email">
           		<span class="help-inline"><g:fieldError bean="${clientInstance}" field="email" /></span>
             </g:hasErrors>
