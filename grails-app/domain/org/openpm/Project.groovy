@@ -2,9 +2,9 @@ package org.openpm
 
 class Project {
 	
-	/*enum Status {
-		OPEN, CLOSED
-	}*/
+	enum Status {
+		open, closed
+	}
 	
 	String name
 	String code
@@ -27,4 +27,8 @@ class Project {
 			}
 		}
     }
+	
+	Status getStatus() {
+		endDate == null ? Status.open : Status.closed 
+	}
 }
