@@ -98,4 +98,22 @@ class ProjectTests {
 		
 		assert 'validator' == project.errors['endDate']
 	}
+	
+	void testStatusOpen() {
+		def project = new Project(
+			startDate: Date.parse(DATE_FORMAT, '01/05/2013'),
+			endDate: null
+		)
+		
+		assert Project.Status.open == project.getStatus()
+	}
+	
+	void testStatusClosed() {
+		def project = new Project(
+			startDate: Date.parse(DATE_FORMAT, '01/05/2013'), 
+			endDate: Date.parse(DATE_FORMAT, '10/05/2013')
+		)
+		
+		assert Project.Status.closed == project.getStatus()
+	}
 }
