@@ -3,9 +3,12 @@
         <div class="container-fluid">
         	<a class="brand" href="#">Open Project Management</a>
             <ul class="nav">
-				<li class="active"><g:link controller="project" action="list">Projects</g:link></li>
-				<li><a href="#about">Invoices</a></li>
-				<li><g:link controller="admin">Administration</g:link></li>
+				<li class="${controllerName == 'project' ? 'active' :''}">
+					<g:link controller="project" action="list">Projects</g:link>
+				</li>
+				<li class="${controllerName == 'invoice' ? 'active' :''}"><a href="#about">Invoices</a></li>
+				<li class="${controllerName == 'admin' ? 'active' :''}">
+					<g:link controller="admin">Administration</g:link></li>
 				<li><a href="#about">About</a></li>
 			</ul>
 			<div class="btn-group pull-right">
