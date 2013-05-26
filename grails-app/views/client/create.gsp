@@ -46,8 +46,8 @@
 	</div>
 	<div class="form-actions">
     	<button type="submit" class="btn btn-primary">Create</button>
-        <button class="btn">Cancel</button>
-    </div>
+        <g:link action="list" class="btn">Cancel</g:link>
+    </div> 
 </g:form>
 
 </body>
