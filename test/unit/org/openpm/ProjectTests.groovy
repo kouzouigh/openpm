@@ -10,6 +10,8 @@ import org.openpm.Project;
 @TestFor(Project)
 class ProjectTests {
 
+	static final String DATE_FORMAT = 'dd/MM/yyyy'
+	
     void setUp() {
 		mockForConstraintsTests(Project)
 	}
@@ -84,5 +86,16 @@ class ProjectTests {
 		assert !project.validate()
 		
 		assert 'nullable' == project.errors['startDate']
+	}
+	
+	void testEndDateBeforeStartDate() {
+		def project = new Project(
+			startDate: Date.parse(DATE_FORMAT, '10/05/2013'), 
+			endDate: Date.parse(DATE_FORMAT, '01/05/2013')
+		)
+		
+		assert !project.validate()
+		
+		assert 'validator' == project.errors['endDate']
 	}
 }
