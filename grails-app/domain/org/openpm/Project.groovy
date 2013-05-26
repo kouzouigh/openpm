@@ -21,7 +21,7 @@ class Project {
 		countries nullable:false, minSize: 1
 		client nullable: false
 		startDate nullable: false
-		endDate nullable:false, validator: {val, obj ->
+		endDate validator: {val, obj ->
 			if( val?.before(obj.startDate) ) {
 				return false
 			}
