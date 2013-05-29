@@ -15,6 +15,11 @@ class ProjectController {
 		[project: project, clients : Client.findAll()]
 	}
 	
+	def edit() {
+		def project = Project.get(params.id)
+		[project: project]
+	}
+	
 	def update() {
 		def project = Project.get(params.id)
 		project.properties = params
