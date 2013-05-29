@@ -4,12 +4,13 @@
 </head>
 <body>
 
-<table class="table">
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>Code</th>
 			<th>Start date</th>
+			<th>End date</th>
 			<th>Client</th>
 			<th>Countries</th>
 			<th>Status</th>
@@ -21,6 +22,7 @@
 			<td>${project.name}</td>
 			<td>${project.code}</td>
 			<td><g:formatDate date="${project.startDate}" type="date" style="MEDIUM"/></td>
+			<td><g:formatDate date="${project.endDate}" type="date" style="MEDIUM"/></td>
 			<td>${project.client.name}</td>
 			<td>${project.countries.name.join(',')}</td>
 			<td>Open</td>
