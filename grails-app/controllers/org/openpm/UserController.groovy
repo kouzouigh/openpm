@@ -17,12 +17,15 @@ class UserController {
 		[user:user, countries: countries]
 	}
 	
+	def create() {
+		[userInstance: new User()]
+	}
+	
 	def update() {
 		
 	}
 	
 	def list() {
-		println User.findAll()
 		[users: User.findAll()]
 	}
 
