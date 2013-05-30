@@ -22,7 +22,7 @@
 			<td>${client.country.name}</td>
 			<td class="align-right">
 				<g:link action="edit" id="${client.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
-				<a class="btn btn-small btn-danger" data-toggle="modal" href="#modalPanel"><i class="icon-remove icon-white"></i></a>
+				<a class="btn btn-small btn-danger" data-toggle="modal" href="${createLink(action:'deleteConfirmation', id:client.id)}"><i class="icon-remove icon-white"></i></a>
 			</td>
 		</tr>
 	</g:each>
@@ -36,8 +36,18 @@
 <div id="time"></div>
 
 <r:script>
-	$('#timeLink').click(function(){
-		$('#time').load(this.href); return false;
+	$(function () {
+		$('[data-toggle="modal"]').click(function(e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+			if (url.indexOf('#') == 0) {
+				$(url).modal('open');
+			} else {
+				 $.get(url, function(data) {
+     				$(data).modal();
+  				});
+			}
+		});
 	})
 </r:script>
 </body>
