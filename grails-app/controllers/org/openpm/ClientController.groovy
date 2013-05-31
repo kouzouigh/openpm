@@ -57,7 +57,8 @@ class ClientController {
 	def delete() {
 		def clientInstance = Client.get(params.id)
 		if( clientInstance ) {
-			Client.delete()
+			clientInstance.delete()
 		}
+		redirect(action:'list')
 	}
 }
