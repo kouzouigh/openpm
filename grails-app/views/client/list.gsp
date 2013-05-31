@@ -22,18 +22,12 @@
 			<td>${client.country.name}</td>
 			<td class="align-right">
 				<g:link action="edit" id="${client.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
-				<a class="btn btn-small btn-danger" data-toggle="modal" href="${createLink(action:'deleteConfirmation', id:client.id)}"><i class="icon-remove icon-white"></i></a>
+				<a class="btn btn-small btn-danger" data-toggle="modal" data-target="#" href="${createLink(action:'deleteConfirmation', id:client.id)}"><i class="icon-remove icon-white"></i></a>
 			</td>
 		</tr>
 	</g:each>
 </table>
 <g:link controller="client" action="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new client</g:link>
-
-<g:render template="/common/modal"/>
-
-<g:link action="showTime" elementId="timeLink">Show The time</g:link>
-
-<div id="time"></div>
 
 <r:script>
 	$(function () {
