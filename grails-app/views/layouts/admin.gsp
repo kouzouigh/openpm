@@ -10,8 +10,8 @@
 	    <div class="navbar-inner">
 	        <div class="container-fluid">
 	            <ul class="nav">
-	                <li><g:link controller="user" action="list"><i class="icon-user"></i>Users</g:link></li>
-	                <li><g:link controller="client">Clients</g:link></li>
+	                <li class="${controllerName == 'user' ? 'active' :''}"><g:link controller="user" action="list"><i class="icon-user"></i>Users</g:link></li>
+	                <li class="${controllerName == 'client' ? 'active' :''}"><g:link controller="client">Clients</g:link></li>
 	                <li><g:link controller="country"><i class="icon-flag"></i>Countries</g:link></li>
 	            </ul>
 	        </div>
