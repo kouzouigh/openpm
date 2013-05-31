@@ -5,7 +5,7 @@ import org.apache.shiro.subject.Subject;
 
 class UserController {
 	
-	def index() {}
+	static defaultAction = 'list'
 	
 	def edit = {
 		def username = SecurityUtils.subject.principals.oneByType(String)
