@@ -21,6 +21,14 @@ class UserController {
 		[userInstance: new User()]
 	}
 	
+	def save() {
+		def user = new User(params)
+		if( user.save() ) {
+			redirect(action: "list")
+		}
+		render view:'create', model: [userInstance: user]
+	}
+	
 	def update() {
 		
 	}
