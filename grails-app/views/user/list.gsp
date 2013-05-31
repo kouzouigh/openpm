@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name="layout" content="main" />
+	<meta name="layout" content="admin" />
 </head>
 <body>
 
@@ -29,6 +29,7 @@
 		</tr>
 	</g:each>
 </table>
-	<g:link controller="user" action="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new user</g:link>
+<g:link controller="user" action="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new user</g:link>
+
 </body>
 </html>
