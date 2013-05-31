@@ -1,58 +1,61 @@
 <html>
 <head>
-<title>My Profile</title>
-<meta name="layout" content="main" />
+<meta name="layout" content="admin" />
 </head>
 <body>
-
-	<form class="form-horizontal row-fluid">
+<h3 class="page-header">
+    Create user
+</h3>
+	<g:form action="save" class="form-horizontal row-fluid">
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Username</label>
+			<label for="username" class="control-label">Username</label>
 			<div class="controls">
-				<input type="text" class="span8" value="${user.username}"
-					placeholder="Type something here..." id="basicinput"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="basicinput" class="control-label">Display name</label>
-			<div class="controls">
-				<input type="text" class="span8"
-					placeholder="Type something here..." id="basicinput"/>
+				<g:textField class="span8" name="username" value="${userInstance.username}"	id="username" required="required"/>
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Email</label>
+			<label for="email" class="control-label">Email</label>
 			<div class="controls">
-				<input type="text" class="span8" value="${user.email}"
-					placeholder="Type something here..." id="basicinput"/> 
+				<g:textField type="text" class="span8" name="email" value="${userInstance.email}" id="email" required="required"/> 
 			</div>
 		</div>
+		
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Code</label>
+			<label for="code" class="control-label">Code</label>
 			<div class="controls">
-				<input type="text" class="span8" value="${user.code}"
-					placeholder="Type something here..." id="basicinput">
+				<g:textField class="span8" name="code" value="${userInstance.code}" id="code" required="required"/>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="roles" class="control-label">Role</label>
+			<div class="controls">
+				<g:select class="span8"
+						  id="roles"	
+						  name="roles" 
+						  from="${org.openpm.Role.list()}"
+						  multiple="true"
+				 		  value="${userInstance?.roles?.id}"
+				 		  optionKey="id" optionValue="name"/>
 			</div>
 		</div>
 
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Country</label>
+			<label for="country" class="control-label">Country</label>
 			<div class="controls">
 				<g:select class="span8"
-						  name="user.country.id" 
-						  from="${countries}"
-				 		  value="${user.country.id}"
+						  name="country.id"
+						  from="${org.openpm.Country.list()}"
+				 		  value="${userInstance?.country?.id}"
 				 		  noSelection="${['null':'Select One...']}"
 				 		  optionKey="id" optionValue="name"/>
 			</div>
 		</div>
-		
-		<div class="control-group">
-			<div class="controls">
-				<button class="btn" type="submit">Save</button>
-			</div>
-		</div>
-	</form>
+		<div class="form-actions">
+    		<button type="submit" class="btn btn-primary">Create</button>
+        	<g:link action="list" class="btn">Cancel</g:link>
+    	</div>
+	</g:form>
 </body>
 </html>
