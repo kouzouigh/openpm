@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Open Project Management</title>
+    <title>
+    	<g:layoutTitle default="Open Project Management"/>
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
     <r:require modules="bootstrap, bootstrap-fixtaglib"/>
@@ -14,8 +16,7 @@
   </head>
 
   <body>
-  
-  		
+  	
   	<g:render template="/layouts/navigation"/>
   	
     <div class="container-fluid">
