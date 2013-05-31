@@ -1,7 +1,8 @@
 <div id="modalPanel" class="modal hide fade" tabindex="-1" role="dialog"
 	aria-labelledby="modalLabel" aria-hidden="true">
 	
-	<input type="hidden" value="${clientInstance.id}"/>
+	<g:form action="delete" method="post">
+	<g:hiddenField name="id" value="${clientInstance.id}"/>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal"
 			aria-hidden="true">×</button>
@@ -14,4 +15,5 @@
 		<button class="btn" data-dismiss="modal" aria-hidden="true">No</button>
 		<button class="btn btn-primary">Yes</button>
 	</div>
+	</g:form>
 </div>
