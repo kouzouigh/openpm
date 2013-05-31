@@ -1,7 +1,7 @@
 <g:applyLayout name="main">
 <html>
 <head>
-	<meta name="layout" content="main" />
+	
 	<title>Administration</title>
 	<g:layoutHead/>
 </head>
@@ -17,7 +17,7 @@
 	        </div>
 	    </div>
 	</div>
-	<g:pageProperty name="page.mainContent"/>
+	<g:layoutBody/>
 </body>
 </html>
 </g:applyLayout>
