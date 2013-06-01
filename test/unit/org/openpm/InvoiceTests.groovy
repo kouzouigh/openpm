@@ -52,4 +52,13 @@ class InvoiceTests {
 	
 		assert 'nullable' == invoice.errors['status']
 	}
+	
+	void testEventsNull() {
+		def invoice = new Invoice(events: null)
+		
+		assert !invoice.validate()
+	
+		assert 'nullable' == invoice.errors['events']
+
+	}
 }
