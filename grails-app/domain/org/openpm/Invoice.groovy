@@ -13,9 +13,19 @@ class Invoice {
 	Client client
 	Status status
 	Project project
-	InvoiceEvents events
+	InvoiceEvents event
 
     static constraints = {
 		name blank:false
     }
+	
+	Status getStatus() {
+		if( event?.paidDate ) {
+			return Status.Paid
+		}
+		if( event?.sentDate ) {
+			return Status.Sent
+		}
+		return Status.Todo
+	}
 }
