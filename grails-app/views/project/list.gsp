@@ -28,6 +28,7 @@
 			<td>Open</td>
 			
 			<td class="align-right">
+				<g:link action="view" id="${project.id}" class="btn btn-small btn-warning table-edit" title="view project"><i class="icon-search icon-white"></i></g:link>
 				<g:link action="edit" id="${project.id}" class="btn btn-small btn-warning table-edit" title="close project"><i class="icon-stop icon-white"></i></g:link>
 				<g:link action="edit" id="${project.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
 				<a class="btn btn-small btn-danger" data-toggle="modal" href="#modalPanel"><i class="icon-remove icon-white"></i></a>
