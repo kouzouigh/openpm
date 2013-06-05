@@ -8,6 +8,8 @@ import org.junit.*
  */
 @TestFor(Invoice)
 class InvoiceTests {
+	
+	def DEFAULT_DATE = new Date()
 
 	void setUp() {
 		mockForConstraintsTests(Invoice)
@@ -45,20 +47,34 @@ class InvoiceTests {
 		assert 'nullable' == invoice.errors['project']
 	}
 	
-	void testStatusNull() {
-		def invoice = new Invoice(status: null)
-		
-		assert !invoice.validate()
-	
-		assert 'nullable' == invoice.errors['status']
-	}
-	
 	void testEventsNull() {
-		def invoice = new Invoice(events: null)
+		def invoice = new Invoice(event: null)
 		
 		assert !invoice.validate()
 	
-		assert 'nullable' == invoice.errors['events']
-
+		assert 'nullable' == invoice.errors['event']
 	}
+	
+	void testTodoStatus() {
+		def invoice = new Invoice(events: new InvoiceEvents(createdDate: new Date()))
+		
+		assert Invoice.Status.Todo == invoice.getStatus()
+	}
+	
+	void testSentStatus() {
+		def invoice = new Invoice(
+			event:new InvoiceEvents(sentDate:DEFAULT_DATE))
+		
+		assert Invoice.Status.Sent == invoice.getStatus()
+	}
+	
+	void testPaidStatus() {
+		def invoice = new Invoice(
+			event:new InvoiceEvents(createdDate: DEFAULT_DATE, 
+					sentDate: DEFAULT_DATE, 
+				    paidDate: DEFAULT_DATE))
+		
+		assert Invoice.Status.Paid == invoice.getStatus()
+	}
+	
 }
