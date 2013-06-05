@@ -17,6 +17,10 @@
 	        </div>
 	    </div>
 	</div>
+	<h5 class="page-header">
+		<span>Project ${project.name}</span>
+		<span style="float:right"><i class="icon-calendar icon-large"></i><g:formatDate date="${project.startDate}" type="datetime" style="SHORT"/></span>
+	</h5>
 	<g:layoutBody/>
 </body>
 </html>
