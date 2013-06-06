@@ -9,7 +9,7 @@ import org.junit.*
 @TestFor(Invoice)
 class InvoiceTests {
 	
-	def DEFAULT_DATE = new Date()
+	def DEFAULT_DATE = new GregorianCalendar(2013, Calendar.APRIL, 01).getTime()
 
 	void setUp() {
 		mockForConstraintsTests(Invoice)
@@ -63,7 +63,8 @@ class InvoiceTests {
 	
 	void testSentStatus() {
 		def invoice = new Invoice(
-			event:new InvoiceEvents(sentDate:DEFAULT_DATE))
+			event: new InvoiceEvents(createdDate: DEFAULT_DATE, 
+				sentDate:DEFAULT_DATE))
 		
 		assert Invoice.Status.Sent == invoice.getStatus()
 	}
@@ -75,6 +76,15 @@ class InvoiceTests {
 				    paidDate: DEFAULT_DATE))
 		
 		assert Invoice.Status.Paid == invoice.getStatus()
+	}
+	
+	void testOutstandingStatus() {
+		def invoice = new Invoice(
+			terms: 30,
+			event: new InvoiceEvents(createdDate: DEFAULT_DATE, 
+				sentDate:DEFAULT_DATE))
+		
+		assert Invoice.Status.Outstanding == invoice.getStatus()
 	}
 	
 }
