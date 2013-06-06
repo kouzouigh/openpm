@@ -6,7 +6,7 @@ class Invoice {
 		Todo,
 		Sent,
 		Paid,
-		Outstranding
+		Outstanding
 	}
 	
 	String name
@@ -14,9 +14,11 @@ class Invoice {
 	Status status
 	Project project
 	InvoiceEvents event
+	Integer terms
 
     static constraints = {
 		name blank:false
+		terms blank: false
     }
 	
 	Status getStatus() {
@@ -24,8 +26,14 @@ class Invoice {
 			return Status.Paid
 		}
 		if( event?.sentDate ) {
-			return Status.Sent
+			return isOutstanding() ? Status.Outstanding : Status.Sent
 		}
 		return Status.Todo
+	}
+	
+	private isOutstanding() {
+		def now = new Date()
+		def deadline = event.sentDate.plus(terms)
+		now.after(deadline)
 	}
 }
