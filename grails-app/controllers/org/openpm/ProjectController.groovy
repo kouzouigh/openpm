@@ -26,6 +26,12 @@ class ProjectController {
 		project.save()
 	}
 	
+	def view() {
+		def project = Project.read(params.id)
+		session.project = project
+		forward controller: 'activity'
+	}
+	
 	def save() {
 		def project = new Project(params)
 		if( project.save() ) {
