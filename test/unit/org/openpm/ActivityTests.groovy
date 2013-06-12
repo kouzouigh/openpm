@@ -18,8 +18,14 @@ class ActivityTests {
 		
 		assert !activity.validate()
 		
-		println activity.errors['name']
-		
 		assert 'minSize' == activity.errors['name']
+	}
+	
+	void testCountriesMinSize() {
+		def activity = new Activity(countries: [])
+		
+		assert !activity.validate()
+		
+		assert 'minSize' == activity.errors['countries']
 	}
 }
