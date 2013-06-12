@@ -13,7 +13,7 @@ class Project {
 	Date startDate
 	Date endDate
 	
-	static hasMany = [countries: Country]
+	static hasMany = [countries: Country, activities: Activity, invoices: Invoice]
 
     static constraints = {
 		name nullable: false, blank: false, minSize: 4
