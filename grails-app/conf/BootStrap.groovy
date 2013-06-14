@@ -16,6 +16,7 @@ class BootStrap {
 			println "Loading fixture data"
 			fixtureLoader.with {
 				load("countries")
+				load("clients")
 			}
 		}
 		
