@@ -10,6 +10,7 @@ class Project {
 	String code
 	String description
 	Client client
+	User projectManager 
 	Date startDate
 	Date endDate
 	
@@ -23,6 +24,11 @@ class Project {
 		startDate nullable: false
 		endDate nullable: true, validator: {val, obj ->
 			if( val?.before(obj.startDate) ) {
+				return false
+			}
+		}
+		projectManager nullable: false, validator: {val, obj ->
+			if( !val?.roles.contains('PROJECT_MANAGER') ) {
 				return false
 			}
 		}
