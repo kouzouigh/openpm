@@ -88,6 +88,23 @@ class ProjectTests {
 		assert 'nullable' == project.errors['startDate']
 	}
 	
+	void testProjectManagerNull() {
+		def project = new Project(projectManager: null)
+		
+		assert !project.validate()
+		
+		assert 'nullable' == project.errors['projectManager']
+	}
+	
+	void testProjectManagerRole() {
+		def consultant = new Role(name: 'CONSULTANT')
+		def project = new Project(projectManager: new User(roles : [consultant]))
+		
+		assert !project.validate()
+		
+		assert 'validator' == project.errors['projectManager']
+	}
+	
 	void testEndDateBeforeStartDate() {
 		def project = new Project(
 			startDate: Date.parse(DATE_FORMAT, '10/05/2013'), 
