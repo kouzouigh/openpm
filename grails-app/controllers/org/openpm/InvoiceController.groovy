@@ -2,5 +2,7 @@ package org.openpm
 
 class InvoiceController {
 
-    def index() { }
+    def list() { 
+		[invoices: Invoice.list()]
+	}
 }
