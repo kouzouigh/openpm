@@ -46,6 +46,7 @@ class BootStrap {
 		// Add roles to the admin user
 		assert adminUser.addToRoles(adminRole)
 				.addToRoles(consultantRole)
+				.addToRoles(pmRole)
 				.save(flush: true, failOnError: true)
 
 		// Create an standard user
@@ -60,8 +61,21 @@ class BootStrap {
 		// Add role to the standard user
 		assert standardUser.addToRoles(consultantRole)
 				.save(flush: true, failOnError: true)
-
+				
+		// create a project manager user
+		def pmUser = User.findByUsername('project manager') ?:
+					new User(username: "project manager",
+							 email: 'pm@company.com',
+							 code: 'PMU',
+							 country: country,
+							 passwordHash: shiroSecurityService.encodePassword('password'))
+					.save(flush: true, failOnError: true)
+					
+		// Add role to project maager user
+		assert pmUser.addToRoles(pmRole)
+				.save(flush: true, failOnError: true)
 	}
+	
 	def destroy = {
 	}
 }
