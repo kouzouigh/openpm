@@ -31,6 +31,23 @@
         </g:hasErrors>
 	</div>
 	
+	<div class="control-group ${hasErrors(field:'countries', 'error')}">
+			<label for="countries" class="control-label">Countries</label>
+			<div class="controls">
+				<g:select class="span8"
+						  id="countries"
+						  name="countries" 
+						  multiple="true"
+						  from="${session.project.countries}"
+				 		  value="${consultant?.countries?.id}"
+				 		  optionKey="id" optionValue="name"/>
+								 		  
+				<g:hasErrors  bean="${activityInstance}" field="countries">
+               		<span class="help-inline"><g:fieldError bean="${activityInstance}" field="countries" /></span>
+            	</g:hasErrors>
+			</div>
+		</div>
+	
 	<div class="form-actions">
     	<button type="submit" class="btn btn-primary">Create</button>
         <g:link action="list" class="btn">Cancel</g:link>
