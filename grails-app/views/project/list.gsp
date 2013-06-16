@@ -9,6 +9,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Code</th>
+			<th>Project manager</th>
 			<th>Start date</th>
 			<th>End date</th>
 			<th>Client</th>
@@ -21,6 +22,7 @@
 		<tr>
 			<td>${project.name}</td>
 			<td>${project.code}</td>
+			<td>${project.projectManager.username}</td>
 			<td><g:formatDate date="${project.startDate}" type="date" style="MEDIUM"/></td>
 			<td><g:formatDate date="${project.endDate}" type="date" style="MEDIUM"/></td>
 			<td>${project.client.name}</td>
