@@ -2,17 +2,20 @@ package org.openpm
 
 class ProjectController {
 	
+	def userService
+	
     def index() { 
 		redirect (action: 'list')
 	}
 	
-	def list () { 
+	def list () {
 		[projects: Project.findAll()]	
 	}
 	
 	def create () {
+		def projectManagers = userService.findByRoleName('PROJECT_MANAGER')
 		def project = new Project(client: new Client())
-		[project: project, clients : Client.findAll()]
+		[project: project, clients : Client.findAll(), projectManagers: projectManagers]
 	}
 	
 	def edit() {
