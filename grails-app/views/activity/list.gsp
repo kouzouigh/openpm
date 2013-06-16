@@ -15,6 +15,6 @@
 		</thead>
 
 	</table>
-	<g:link action="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new project</g:link>
+	<g:link action="create" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add new Activity</g:link>
 </body>
 </html>
