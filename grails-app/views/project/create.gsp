@@ -9,7 +9,7 @@
 		<div class="control-group ${hasErrors(field:'name', 'error')}">
 			<label for="name" class="control-label">Project name</label>
 			<div class="controls">
-				<g:textField name="name" class="span8" value="${project.name}" id="name"/>
+				<g:textField name="name" class="span8" value="${project.name}" id="name" required="required"/>
 				<g:hasErrors  bean="${project}" field="name">
                		<span class="help-inline"><g:fieldError bean="${project}" field="name" /></span>
             	</g:hasErrors>
@@ -18,7 +18,7 @@
 		<div class="control-group ${hasErrors(field:'code', 'error')}">
 			<label for="code" class="control-label">Project code</label>
 			<div class="controls">
-				<g:textField name="code" value="${project.code}" class="span8" id="code"/>
+				<g:textField name="code" value="${project.code}" class="span8" id="code" required="required"/>
 				<g:hasErrors  bean="${project}" field="code">
                		<span class="help-inline"><g:fieldError bean="${project}" field="code" /></span>
             	</g:hasErrors>
@@ -42,12 +42,33 @@
 					  from="${org.openpm.Client.list()}"
 			 		  value="${project?.client?.id}"
 			 		  noSelection="${['null':'Select One...']}"
-			 		  optionKey="id" optionValue="name"/>
+			 		  optionKey="id" optionValue="name"
+			 		  required="required"/>
    					<button class="btn" style="display:inline" type="button"><i class="icon-plus"></i> Create client</button>
     			</div>
 				
 				<g:hasErrors  bean="${project}" field="client">
                		<span class="help-inline"><g:fieldError bean="${project}" field="client" /></span>
+            	</g:hasErrors>
+			</div>
+		</div>
+		
+		<div class="control-group ${hasErrors(field:'projectManager', 'error')}">
+			<label for="client" class="control-label">Project Manager</label>
+			<div class="controls">
+				<div class="input-append" style="width:100%">
+   					<g:select class="span8"
+   					  id="projectManager"
+					  name="projectManager.id" 
+					  from="${projectManagers}"
+			 		  value="${project?.projectManager?.id}"
+			 		  noSelection="${['null':'Select One...']}"
+			 		  optionKey="id" optionValue="username"
+			 		  required="required"/>
+    			</div>
+				
+				<g:hasErrors  bean="${project}" field="projectManager">
+               		<span class="help-inline"><g:fieldError bean="${project}" field="projectManager" /></span>
             	</g:hasErrors>
 			</div>
 		</div>
