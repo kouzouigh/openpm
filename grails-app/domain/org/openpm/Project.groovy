@@ -28,7 +28,7 @@ class Project {
 			}
 		}
 		projectManager nullable: false, validator: {val, obj ->
-			if( !val?.roles.contains('PROJECT_MANAGER') ) {
+			if( !val?.roles.name.contains('PROJECT_MANAGER') ) {
 				return false
 			}
 		}
