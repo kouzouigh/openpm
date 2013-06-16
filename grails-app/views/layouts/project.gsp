@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>Project</title>
+	<title>Project ${session.project.code}</title>
 	<g:layoutHead/>
 </head>
 <body>
@@ -17,10 +17,32 @@
 	        </div>
 	    </div>
 	</div>
-	<h5 class="page-header">
-		<span>Project ${session.project.name}</span>
-		<span style="float:right"><i class="icon-calendar icon-large"></i><g:formatDate date="${session.project.startDate}" type="datetime" style="SHORT"/></span>
-	</h5>
+	
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Project</th>
+					<th>Code</th>
+					<th>Client</th>
+					<th>Project Manager</th>
+					<th>Start date</th>
+					<th>End Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${session.project.name}</td>
+					<td>${session.project.client.name}</td>
+					<td>${session.project.code}</td>
+					<td>${session.project.projectManager.username}</td>
+					<td><g:formatDate date="${session.project.startDate}" type="date" style="MEDIUM"/></td>
+					<td><g:formatDate date="${session.project.endDate}" type="date" style="MEDIUM"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr/>
 	<g:layoutBody/>
 </body>
 </html>
