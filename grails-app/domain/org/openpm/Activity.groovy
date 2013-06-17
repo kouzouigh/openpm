@@ -6,6 +6,7 @@ class Activity {
 	User consultant
 	Date startDate
 	Date endDate
+	Double feeRates
 	
 	static hasMany = [countries: Country]
 	
