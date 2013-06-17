@@ -4,6 +4,8 @@ class ProjectController {
 	
 	def userService
 	
+	def projectService
+	
     def index() { 
 		redirect (action: 'list')
 	}
@@ -30,7 +32,7 @@ class ProjectController {
 	}
 	
 	def view() {
-		def project = Project.read(params.id)
+		def project = projectService.fetch(params.long('id'))
 		session.project = project
 		forward controller: 'activity'
 	}
