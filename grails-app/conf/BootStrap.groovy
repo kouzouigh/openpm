@@ -38,6 +38,8 @@ class BootStrap {
 		def adminUser = User.findByUsername('admin') ?:
 			new User(username: "admin",
 					email: "admin@company.com",
+					firstName: "Steve",
+					lastName: "Dupont",
 					code: 'ADM',
 					country: country,
 					passwordHash: shiroSecurityService.encodePassword('password'))
@@ -52,6 +54,8 @@ class BootStrap {
 		// Create an standard user
 		def standardUser = User.findByUsername('joe') ?:
 			new User(username: "joe",
+					 firstName: "joe",
+					 lastName: "Bob", 
 					 code: 'JOE',
 					 email: "joe@company.com",
 					 country: country,
@@ -65,6 +69,8 @@ class BootStrap {
 		// create a project manager user
 		def pmUser = User.findByUsername('project manager') ?:
 					new User(username: "project manager",
+							 firstName: "Donald",
+							 lastName: "Bar",
 							 email: 'pm@company.com',
 							 code: 'PMU',
 							 country: country,
