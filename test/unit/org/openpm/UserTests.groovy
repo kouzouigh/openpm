@@ -79,4 +79,36 @@ class UserTests {
 		assert 'nullable' == user.errors['country']
 	}
 	
+	void testNullFirstName() {
+		def user = new User(firstName: null)
+		
+		assert !user.validate()
+		
+		assert 'nullable' == user.errors['firstName']
+	}
+	
+	void testBlankFirstName() {
+		def user = new User(firstName: '')
+		
+		assert !user.validate()
+		
+		assert 'blank' == user.errors['firstName']
+	}
+	
+	void testNullLastName() {
+		def user = new User(lastName: null)
+		
+		assert !user.validate()
+		
+		assert 'nullable' == user.errors['lastName']
+	}
+	
+	void testBlankLastName() {
+		def user = new User(lastName: '')
+		
+		assert !user.validate()
+		
+		assert 'blank' == user.errors['lastName']
+	}
+	
 }
