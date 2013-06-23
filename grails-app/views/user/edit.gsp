@@ -1,38 +1,59 @@
 <html>
 <head>
-<title>My Profile</title>
 <meta name="layout" content="main" />
 </head>
 <body>
+	<h3 class="page-header">
+    	Edit profile
+	</h3>
 
-	<form class="form-horizontal row-fluid">
+	<g:form action="update" class="form-horizontal row-fluid">
+		<input type="hidden" name="id" value="${userInstance.id}" />
+		<input type="hidden" name="version" value="${userInstance.version}" />
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Username</label>
+			<label for="username" class="control-label">Username</label>
 			<div class="controls">
-				<input type="text" class="span8" value="${user.username}"
-					placeholder="Type something here..." id="basicinput"/>
+				<g:textField class="span8" name="username" value="${userInstance.username}"	id="username" required="required"/>
+				<g:hasErrors  bean="${clientInstance}" field="name">
+          			<span class="help-inline"><g:fieldError bean="${userInstance}" field="name" /></span>
+            	</g:hasErrors>
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Display name</label>
+			<label for="firstName" class="control-label">First name</label>
 			<div class="controls">
-				<input type="text" class="span8"
-					placeholder="Type something here..." id="basicinput"/>
+				<g:textField class="span8" name="firstName" value="${userInstance.firstName}" id="firstName" required="required"/>
+				<g:hasErrors  bean="${clientInstance}" field="firstName">
+          			<span class="help-inline"><g:fieldError bean="${userInstance}" field="firstName" /></span>
+            	</g:hasErrors>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="lastName" class="control-label">Last name</label>
+			<div class="controls">
+				<g:textField class="span8" name="lastName" value="${userInstance.lastName}" id="lastName" required="required"/>
+				<g:hasErrors  bean="${clientInstance}" field="lastName">
+          			<span class="help-inline"><g:fieldError bean="${userInstance}" field="lastName" /></span>
+            	</g:hasErrors>	 
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="email" class="control-label">Email</label>
+			<div class="controls">
+				<g:textField class="span8" name="email" value="${userInstance.email}" id="email" required="required"/>
+				<g:hasErrors  bean="${clientInstance}" field="email">
+          			<span class="help-inline"><g:fieldError bean="${userInstance}" field="email" /></span>
+            	</g:hasErrors>	 
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label for="basicinput" class="control-label">Email</label>
+			<label for="code" class="control-label">Code</label>
 			<div class="controls">
-				<input type="text" class="span8" value="${user.email}"
-					placeholder="Type something here..." id="basicinput"/> 
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="basicinput" class="control-label">Code</label>
-			<div class="controls">
-				<input type="text" class="span8" value="${user.code}"
-					placeholder="Type something here..." id="basicinput">
+				<g:textField class="span8" name="code" value="${userInstance.code}" id="code" required="required"/>
+				<g:hasErrors  bean="${clientInstance}" field="code">
+          			<span class="help-inline"><g:fieldError bean="${userInstance}" field="code" /></span>
+            	</g:hasErrors>	 
 			</div>
 		</div>
 
@@ -42,17 +63,17 @@
 				<g:select class="span8"
 						  name="user.country.id" 
 						  from="${countries}"
-				 		  value="${user.country.id}"
+				 		  value="${userInstance.country.id}"
 				 		  noSelection="${['null':'Select One...']}"
 				 		  optionKey="id" optionValue="name"/>
 			</div>
 		</div>
 		
-		<div class="control-group">
-			<div class="controls">
-				<button class="btn" type="submit">Save</button>
-			</div>
-		</div>
-	</form>
+		<div class="form-actions">
+    		<button type="submit" class="btn btn-primary">Update</button>
+        	<g:link action="list" class="btn">Cancel</g:link>
+    	</div>
+	</g:form>
+	
 </body>
 </html>
