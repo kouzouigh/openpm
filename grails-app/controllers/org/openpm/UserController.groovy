@@ -9,12 +9,12 @@ class UserController {
 	
 	def edit = {
 		def username = SecurityUtils.subject.principals.oneByType(String)
-		def user = User.findByUsername(username)
-		if( !user ) {
+		def userInstance = User.findByUsername(username)
+		if( !userInstance ) {
 			flash.message = "User ${params.id} not found"
 		}
 		def countries = Country.findAll()
-		[user:user, countries: countries]
+		[userInstance:userInstance, countries: countries]
 	}
 	
 	def create() {
@@ -30,7 +30,22 @@ class UserController {
 	}
 	
 	def update() {
-		
+		def userInstance = User.get(params.id)
+		if( userInstance ) {
+			if( params.version ) {
+				def version = params.version.toLong()
+				if( userInstance.version > version) {
+					userInstance.errors.rejectValue("version", "user.optimistic.locking.failure", "Another user has updated this Client while you were editing.")
+					render(view: 'edit', model:[clientInstance:userInstance])
+					return
+				}
+			}
+			userInstance.properties = params
+			if( userInstance.save() ) {
+				flash.message = "User updated"
+				redirect(action:'edit')
+			}
+		}
 	}
 	
 	def list() {
