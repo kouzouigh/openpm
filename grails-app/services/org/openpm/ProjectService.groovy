@@ -1,12 +1,16 @@
 package org.openpm
 
+import org.hibernate.FetchMode;
+
 class ProjectService {
 
     def fetch(Long id) {
-		Project.find('''from Project project 
-						join fetch project.projectManager 
-						join fetch project.client 
-						join fetch project.countries 
-						where project.id = :id''', [id:id])
+		def criteria = Project.createCriteria()
+		criteria.get {
+			eq('id', id)
+			fetchMode("projectManager", FetchMode.JOIN)
+			fetchMode("client", FetchMode.JOIN)
+		}
+		
     }
 }
