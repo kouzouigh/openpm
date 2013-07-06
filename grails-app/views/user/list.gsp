@@ -23,7 +23,7 @@
 			<td>${user.email}</td>
 			<td>France</td>
 			<td class="align-right">
-				<a class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></a>
+				<g:link action="edit" id="${user.id}" class="btn btn-small btn-warning table-edit"><i class="icon-edit icon-white"></i></g:link>
 				<a class="btn btn-small btn-danger"><i class="icon-remove icon-white"></i></a>
 			</td>
 		</tr>
