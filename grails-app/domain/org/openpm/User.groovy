@@ -10,7 +10,7 @@ class User {
 	String code
 	Country country
 	
-	static hasMany = [ roles: Role, permissions: String ]
+	static hasMany = [roles: Role, permissions: String, chargeRates: ChargeRate]
 
     static constraints = {
 		email email:true, blank:false, nullable:false, unique:true
