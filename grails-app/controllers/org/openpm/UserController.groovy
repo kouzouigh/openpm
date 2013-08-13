@@ -5,16 +5,28 @@ import org.apache.shiro.subject.Subject;
 
 class UserController {
 	
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
 	static defaultAction = 'list'
 	
-	def edit = {
+	def edit() {
+		def userInstance = User.get(params.id)
+
+		if (!userInstance) {
+			render status:404
+			return
+		}
+		[userInstance:userInstance]
+	}
+	
+	def profile() {
 		def username = SecurityUtils.subject.principals.oneByType(String)
+		println username
 		def userInstance = User.findByUsername(username)
 		if( !userInstance ) {
 			flash.message = "User ${params.id} not found"
 		}
-		def countries = Country.findAll()
-		[userInstance:userInstance, countries: countries]
+		[userInstance:userInstance]
 	}
 	
 	def create() {
