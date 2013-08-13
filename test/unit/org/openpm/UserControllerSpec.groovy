@@ -1,7 +1,11 @@
 package org.openpm
 
 import grails.test.*
+import groovy.mock.interceptor.MockFor;
 import spock.lang.Specification
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.PrincipalCollection
+import org.apache.shiro.subject.Subject
 
 @Mock(User)
 @TestFor(UserController)
@@ -22,7 +26,6 @@ class UserControllerSpec extends Specification {
 		setup: "an existing user"
 		userInstance.save(flush:true, validate:false)
 		
-		and:"his id is passed as parameter"
 		controller.params.id = userInstance.id
 		
 		expect:
@@ -30,6 +33,31 @@ class UserControllerSpec extends Specification {
 		
 		where:
 		userInstance = new User(email:"kamel@site.com")
+	}
+	
+	def "test user profile"() {
+		setup:"a loggedIn user"
+		userInstance.save(flush:true, validate:false)
+		
+		def subjectMock = mockFor(Subject)
+		def principals = mockFor(PrincipalCollection)
+		
+		SecurityUtils.metaClass.static.getSubject = {
+			subjectMock.createMock()
+		}
+		
+		principals.demand.oneByType {
+			return "kamel"
+		}
+		subjectMock.demand.getPrincipals {
+			-> return principals.createMock()
+		}
+		
+		expect:
+		controller.profile() == [userInstance:userInstance]
+		
+		where:
+		userInstance = new User(username:"kamel", email:"kamel@site.com")
 	}
 	
 }
