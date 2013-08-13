@@ -32,21 +32,34 @@
 	</div>
 	
 	<div class="control-group ${hasErrors(field:'countries', 'error')}">
-			<label for="countries" class="control-label">Countries</label>
-			<div class="controls">
-				<g:select class="span8"
-						  id="countries"
-						  name="countries" 
-						  multiple="true"
-						  from="${session.project.countries}"
-				 		  value="${consultant?.countries?.id}"
-				 		  optionKey="id" optionValue="name"/>
-								 		  
-				<g:hasErrors  bean="${activityInstance}" field="countries">
-               		<span class="help-inline"><g:fieldError bean="${activityInstance}" field="countries" /></span>
-            	</g:hasErrors>
-			</div>
+		<label for="countries" class="control-label">Countries</label>
+		<div class="controls">
+			<g:select class="span8"
+					  id="countries"
+					  name="countries" 
+					  multiple="true"
+					  from="${session.project.countries}"
+			 		  value="${consultant?.countries?.id}"
+			 		  optionKey="id" optionValue="name"/>
+							 		  
+			<g:hasErrors  bean="${activityInstance}" field="countries">
+              		<span class="help-inline"><g:fieldError bean="${activityInstance}" field="countries" /></span>
+           	</g:hasErrors>
 		</div>
+	</div>
+	
+	<div class="control-group">
+	   	<label class="control-label" for="name">Charge rate</label>
+	   	<div class="controls">
+   		 	<div class="input-append">
+				<g:textField name="name" class="input-mini" value="${activityInstance.hourlyChargeRate}" id="name" required="" />
+				<span class="add-on">&euro;</span>
+			</div>
+			<g:hasErrors  bean="${activityInstance}" field="hourlyChargeRate">
+          		<span class="help-inline"><g:fieldError bean="${activityInstance}" field="hourlyChargeRate" /></span>
+            </g:hasErrors>
+	    </div>
+	</div>
 	
 	<div class="form-actions">
     	<button type="submit" class="btn btn-primary">Create</button>
