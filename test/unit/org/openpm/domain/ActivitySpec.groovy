@@ -62,6 +62,17 @@ class ActivitySpec extends Specification {
 		activity = new Activity(consultant: null)
 	}
 	
+	def "activity msut be relate to a project"() {
+		setup:
+		activity.validate()
+		
+		expect:
+		activity.errors['project'] == 'nullable'
+		
+		where:
+		activity = new Activity(project: null)
+	}
+	
 	def "activity charge rate is mandatory"() {
 		setup:
 		activity.validate()
