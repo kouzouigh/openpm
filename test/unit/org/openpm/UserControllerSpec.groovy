@@ -39,6 +39,16 @@ class UserControllerSpec extends Specification {
 		setup:"a loggedIn user"
 		userInstance.save(flush:true, validate:false)
 		
+		setupShiroSecurity()
+		
+		expect:
+		controller.profile() == [userInstance:userInstance]
+		
+		where:
+		userInstance = new User(username:"kamel", email:"kamel@site.com")
+	}
+	
+	void setupShiroSecurity() {
 		def subjectMock = mockFor(Subject)
 		def principals = mockFor(PrincipalCollection)
 		
@@ -52,12 +62,6 @@ class UserControllerSpec extends Specification {
 		subjectMock.demand.getPrincipals {
 			-> return principals.createMock()
 		}
-		
-		expect:
-		controller.profile() == [userInstance:userInstance]
-		
-		where:
-		userInstance = new User(username:"kamel", email:"kamel@site.com")
 	}
 	
 }
