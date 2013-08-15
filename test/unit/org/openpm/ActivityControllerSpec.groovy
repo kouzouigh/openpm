@@ -16,7 +16,7 @@ class ActivityControllerSpec extends Specification {
 	def cleanup() {
 	}
 
-	void "test save succes activity"() {
+	void "test save succes"() {
 		given:
 		new User(id:1).save(flush:true, validate:false)
 		request.method = "POST"
@@ -26,12 +26,27 @@ class ActivityControllerSpec extends Specification {
 		params.startDate_month = '8'
 		params.startDate_day = '15'
 		params.startDate_year = '2013'
-		println params
 		
 		when:
 		controller.save()
 		
 		then:
 		response.redirectedUrl == "/activity/list"
+	}
+	
+	void "test save fails"() {
+		given:
+		new User(id:1).save(flush:true, validate:false)
+		request.method = "POST"
+		params.name = 'Control activity'
+		params['consultant.id'] = 1
+		params.hourlyChargeRate = '100'
+		
+		when:
+		controller.save()
+		
+		then:
+		view == '/activity/create'
+		model.activityInstance.hasErrors()
 	}
 }
