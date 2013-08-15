@@ -12,6 +12,7 @@ class Activity {
 	Date endDate
 	Double hourlyChargeRate
 	Country country
+	Project project
 	
 	
     static constraints = {
