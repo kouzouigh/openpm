@@ -6,7 +6,7 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@Mock([Activity, User, Country])
+@Mock([Activity, User, Country, Project])
 @TestFor(ActivityController)
 class ActivityControllerSpec extends Specification {
 
@@ -14,7 +14,10 @@ class ActivityControllerSpec extends Specification {
 		given:
 		new User(id:1).save(flush:true, validate:false)
 		new Country(id:1).save(flush:true, validate:false)
+		new Project(id:1).save(flush:true, validate:false)
+		
 		request.method = "POST"
+		params['project.id'] = 1
 		params.name = 'Control activity'
 		params['consultant.id'] = 1
 		params['country.id'] = 1
