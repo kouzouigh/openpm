@@ -1,5 +1,6 @@
-package org.openpm
+package org.openpm.activity
 
+import org.openpm.*
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

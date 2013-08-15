@@ -1,4 +1,4 @@
-package org.openpm.domain
+package org.openpm.activity
 
 import grails.test.mixin.*
 import org.junit.*
