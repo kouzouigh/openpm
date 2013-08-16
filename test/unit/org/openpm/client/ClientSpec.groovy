@@ -1,6 +1,6 @@
 package org.openpm.client
 
-import spock.lang.Specification;
+import spock.lang.*;
 
 import grails.test.mixin.*
 import org.junit.*
@@ -16,48 +16,51 @@ class ClientSpec extends Specification {
 		mockForConstraintsTests(Client)
 	}
 	
-	def "client name is mandatory"() {
+	@Unroll
+	def "property #property is mandatory"() {
 		setup:
+		def client = new Client("$property": null)
 		client.validate()
 		
 		expect:
-		client.errors['name']  == 'nullable' 
+		client.errors["$property"]  == 'nullable'
 		
 		where:
-		client = new Client(name: null)
+		property      | _
+		"name"        | _
+		"email"	      | _
+		"contactName" | _
+		"country"     | _
 	}
 	
-	def "test with blank name"() {
+	@Unroll
+	def "property #property should be not blank"() {
 		setup:
+		def client = new Client("$property": '')
 		client.validate()
 		
 		expect:
-		client.errors['name'] == 'blank'
+		client.errors["$property"]  == 'blank'
 		
 		where:
-		client = new Client(name: '')
+		property      | _
+		"name"        | _
+		"contactName" | _
 	}
 	
-	def "client name size should be greater than 3"() {
+	@Unroll
+	def "property #property size should be greater than #size"() {
 		setup:
+		def client = new Client("$property": value)
 		client.validate()
 		
 		expect:
-		client.errors['name'] == 'minSize'
+		client.errors["$property"] == 'minSize'
 		
 		where:
-		client = new Client(name: 'Cl')		
-	}
-	
-	def "email is mandatory"() {
-		setup:
-		client.validate()
-		
-		expect:
-		client.errors['email'] == 'nullable'
-		
-		where:
-		client = new Client(email: null)
+		property      | value | minSize
+		"name"        | "Cl"  | 3
+		"contactName" | "CL"  | 3
 	}
 	
 	def "email should be valid"() {
@@ -69,47 +72,6 @@ class ClientSpec extends Specification {
 		
 		where:
 		client = new Client(email: 'client@email')		
-	}
-	
-	def "contact name is mandatory"() {
-		def client = new Client()
-		
-		assert !client.validate()
-		
-		assert 'nullable' == client.errors['contactName']
-	}
-	
-	def "contact name should be not blank"() {
-		setup:
-		assert !client.validate()
-		
-		expect:
-		client.errors['contactName'] == 'blank'
-		
-		where:
-		client = new Client(contactName: '')
-	}
-	
-	void "client contact name size should be greater than 3"() {
-		setup:
-		client.validate()
-		
-		expect:
-		client.errors['contactName'] == 'minSize'
-		
-		where:
-		client = new Client(contactName: 'CL')	
-	}
-	
-	void "client country is mandatory"() {
-		setup:
-		client.validate()
-		
-		expect:
-		client.errors['country'] == 'nullable'
-		
-		where:
-		client = new Client(country: null)		
 	}
 	
 }
