@@ -49,7 +49,7 @@ class ClientSpec extends Specification {
 	}
 	
 	@Unroll
-	def "property #property size should be greater than #size"() {
+	def "property #property size should be greater than #minSize"() {
 		setup:
 		def client = new Client("$property": value)
 		client.validate()
