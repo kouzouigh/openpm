@@ -1,9 +1,13 @@
-body {
-	padding-top: 100px
+.main-container {
+	padding-top: 90px;
 }
 
 .align-right {
 	text-align: right !important;
+}
+
+.full-width {
+	width: 100%;
 }
 
 .subnav.navbar {

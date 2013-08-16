@@ -9,7 +9,7 @@
 				<li class="${controllerName == 'invoice' ? 'active' :''}"><a href="#about">Invoices</a></li>
 				<li class="${controllerName in ['admin','user','client',] ? 'active' :''}">
 					<g:link controller="user" action="list">Administration</g:link></li>
-				<li><a href="#about">About</a></li>
+				<li><a href="#about"><i class="icon-info-sign icon-white"></i> About</a></li>
 			</ul>
 			<div class="btn-group pull-right">
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

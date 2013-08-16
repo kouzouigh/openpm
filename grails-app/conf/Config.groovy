@@ -90,4 +90,8 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+	
+	debug  'org.codehaus.groovy.grails.plugins.i18n'   
+		   	   
+	trace  'org.hibernate.SQL'
 }

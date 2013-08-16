@@ -19,23 +19,25 @@
 	</div>
 	
 	<div>
-		<table class="table">
+		<table class="table table-bordered table-condensed">
 			<thead>
-				<tr>
+				<tr style="background:#eee">
 					<th>Project</th>
 					<th>Code</th>
 					<th>Client</th>
 					<th>Project Manager</th>
+					<th>Countries</th>
 					<th>Start date</th>
 					<th>End Date</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr class="warning">
 					<td>${session.project.name}</td>
 					<td>${session.project.client.name}</td>
 					<td>${session.project.code}</td>
 					<td>${session.project.projectManager.username}</td>
+					<td>${session.project.countries.name.join(',')}</td>
 					<td><g:formatDate date="${session.project.startDate}" type="date" style="MEDIUM"/></td>
 					<td><g:formatDate date="${session.project.endDate}" type="date" style="MEDIUM"/></td>
 				</tr>

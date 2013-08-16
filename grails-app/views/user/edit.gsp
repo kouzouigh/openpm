@@ -6,7 +6,15 @@
 	<h3 class="page-header">
     	Edit profile
 	</h3>
-
+	<button onclick="$.pnotify({
+						title: 'Bootstrap Icon Notice',
+						type:'info',
+						hide: true,
+						delay: 1000,
+						text: 'I have an icon that uses the Bootstrap icon styles.',
+						history: false
+					});" class="btn source">Bootstrap Icon Notice</button>
+	<g:message code="${flash.message}"/>
 	<g:form action="update" class="form-horizontal row-fluid">
 		<input type="hidden" name="id" value="${userInstance.id}" />
 		<input type="hidden" name="version" value="${userInstance.version}" />
@@ -69,11 +77,41 @@
 			</div>
 		</div>
 		
+		<div class="control-group">
+			<label class="control-label">Charge Rates</label>
+			<div class="controls">
+				<div class="span8">
+					<table class="table table-condensed table-bordered full-width">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<g:datePicker name="startDate" value="${new Date()}"precision="day" relativeYears="[-1..7]"/>
+								</td>
+								<td>
+									<input name="rate" value="">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
 		<div class="form-actions">
     		<button type="submit" class="btn btn-primary">Update</button>
         	<g:link action="list" class="btn">Cancel</g:link>
     	</div>
 	</g:form>
+	
+	<r:script>
+		
+	</r:script>
 	
 </body>
 </html>

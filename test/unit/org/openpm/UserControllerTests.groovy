@@ -10,6 +10,7 @@ import org.junit.*
 @Mock(User)
 class UserControllerTests {
 
+	
   void testLoginUserNotFound() {
 		request.method = 'POST'
 		

@@ -22,6 +22,7 @@ class Invoice {
     }
 	
 	Status getStatus() {
+		println event.paidDate
 		if( event?.paidDate ) {
 			return Status.Paid
 		}
