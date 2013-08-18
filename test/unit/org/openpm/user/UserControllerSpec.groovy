@@ -1,7 +1,10 @@
 package org.openpm.user
 
+import org.openpm.User
+import org.openpm.UserController
+
 import grails.test.*
-import groovy.mock.interceptor.MockFor;
+import groovy.mock.interceptor.MockFor
 import spock.lang.Specification
 import org.apache.shiro.SecurityUtils
 import org.apache.shiro.subject.PrincipalCollection
