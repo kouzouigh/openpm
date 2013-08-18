@@ -1,4 +1,4 @@
-package org.openpm
+package org.openpm.user
 
 import grails.test.*
 import groovy.mock.interceptor.MockFor;
