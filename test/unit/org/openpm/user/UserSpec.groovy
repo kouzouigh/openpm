@@ -69,7 +69,7 @@ class UserSpec extends Specification {
 
 	def "email should be valid"() {
 		setup:
-		client.validate()
+		user.validate()
 		
 		expect:
 		user.errors['email'] == 'email'
