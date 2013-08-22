@@ -23,9 +23,7 @@ class ActivityController {
 		if( activity.save() ) {
 			redirect(action: "list")
 		}
-		
-		println activity.errors
-		
+		 
 		render view:'create', model: [activityInstance: activity]
 	}
 }
