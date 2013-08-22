@@ -11,7 +11,7 @@
 	        <div class="container-fluid">
 	            <ul class="nav">
 	                <li class="${controllerName == 'activity' ? 'active' :''}"><g:link controller="activity" action="list"><i class="icon-th"></i>Activities</g:link></li>
-	                <li class="${controllerName == 'invoice' ? 'active' :''}"><g:link controller="invoice"><i class="icon-file"></i>Invoices</g:link></li>	                
+	                <li class="${controllerName == 'invoice' ? 'active' :''}"><g:link controller="invoice" action="list"><i class="icon-file"></i>Invoices</g:link></li>	                
 	                <li class="${controllerNamer == 'profitability' ? 'active' : ''}"><g:link controller="profitability">Profitability</g:link></li>
 	            </ul>
 	        </div>
