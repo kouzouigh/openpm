@@ -3,6 +3,12 @@
         <div class="container-fluid">
         	<a class="brand" href="#">Open Project Management</a>
             <ul class="nav">
+            	<li class="${(actionUri == '/activity/timesheet') ? 'active' :''}">
+					<g:link controller="activity" action="timesheet">Timesheet</g:link>
+				</li>
+            	<li class="${controllerName == 'project' ? 'active' :''}">
+					<g:link controller="project" action="list">Projects</g:link>
+				</li>
 				<li class="${controllerName == 'project' ? 'active' :''}">
 					<g:link controller="project" action="list">Projects</g:link>
 				</li>
