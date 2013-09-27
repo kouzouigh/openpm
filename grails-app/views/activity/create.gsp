@@ -21,6 +21,13 @@
 	</div>
 	
 	<div class="control-group">
+		<label for="description" class="control-label">Description</label>
+		<div class="controls">
+			<g:textArea id="description" name="description" class="span3" value="${activityInstance.description}"></g:textArea> 
+		</div>
+	</div>
+	
+	<div class="control-group">
 		<label for="consultant" class="control-label">Consultant</label>
 		<div class="controls">
 			<g:select name="consultant.id"
