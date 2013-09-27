@@ -13,6 +13,7 @@ class Activity {
 	Double hourlyChargeRate
 	Country country
 	Project project
+	String description
 	
 	
     static constraints = {
