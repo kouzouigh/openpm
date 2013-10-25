@@ -18,6 +18,7 @@ class Activity {
 	
     static constraints = {
 		name minSize:3
+		description nullable: true
 		endDate nullable: true
     }
 	
