@@ -47,7 +47,7 @@ class InvoiceSpec extends Specification {
 		invoice.validate()
 		
 		expect:
-		invoice.errors["$property"]  == 'blank'
+		invoice.errors["$property"]  == 'nullable'
 		
 		where:
 		property      | _
@@ -87,7 +87,7 @@ class InvoiceSpec extends Specification {
 		assert Invoice.Status.Outstanding == invoice.getStatus()
 	}
 	
-	def "when the invoice is paid the status should be Paid"() {
+	def "when the invoice is paid, the status should be Paid"() {
 		given:
 		def invoice = new Invoice()
 		and:
