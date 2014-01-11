@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
 		runtime ":shiro:1.1.4"
+        runtime ':twitter-bootstrap:3.0.3'
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
@@ -64,14 +65,9 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.2"
 		
 		if (Environment.current == Environment.DEVELOPMENT) {
-			compile ":build-test-data:2.0.5",
+			compile ":build-test-data:2.0.6",
 					":fixtures:1.2"
 		}
 		
-		test	":spock:0.7", {
-				exclude "spock-grails-support"
-		}
-
-        compile ':cache:1.0.1'
     }
 }
